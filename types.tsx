@@ -19,8 +19,8 @@ export interface GetPokemons {
 
 export interface Info {
     count: number;
-    pages: number;
     next: string;
+    pages: number;
     prev: null;
 }
 
