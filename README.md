@@ -1,34 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#Brief Details
 
-## Getting Started
+The API used for this project is (https://pokeapi.co/).
 
-First, run the development server:
+This project was built using React, Next js, Typescript and TailwindCSS.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+My first approach was to study the api and understand the different type of data structures, with that i was able to get the interface types need for typescript.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Next, i used the GetStaticProps provided by Next js to fetch the data which was then pass as props to my component.
+Since i already initialized the data types i was able to assigned the fetch data to the given types.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+I displayed the data available which is the pokemon names. Then i included a search bar which will return only the pokemon name been search.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+I created a pokemon detailpage called (pokemon) and added the [id] route so each pokemon will be redirected to that page when clicked from the home page. I used the (Link) property provided by next js to link each pokemon to their respective pages using their unique property (name).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Inside the pokemon detail page i used the GetServerSideProps provided by next js which included the (context) for getting the current page url which included the pokemon's name.
+I then passed it to the component as a prop which i used in displaying other informations abot the pokemon like the image, species, weight, stats, moves and types.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#Improvment
+In due time i will improve on the app to load next and previous pages.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
