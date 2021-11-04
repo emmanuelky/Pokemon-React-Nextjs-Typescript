@@ -1,5 +1,5 @@
 import type { NextPage, GetStaticProps } from 'next'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, FormGroup } from 'react-bootstrap'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -12,16 +12,20 @@ interface Query {
 
 const Home: NextPage<{ pokemons: Result[] }> = ({ pokemons }) => {
 
+  const [pokemonData, setPokemonData] = useState<Result[]>([]);
   const [query, setQuery] = useState<Query>({
     name: "",
   });
 
-
+  useEffect(() => {
+    handleSearchedQuery();
+    setPokemonData(pokemons);
+  }, [query.name])
 
 
   const handleSearchedQuery = () => {
 
-
+    return pokemonData.filter(pokemon => pokemon.name.toLowerCase() === query.name.toLowerCase() ? setPokemonData([pokemon]) : null)
   }
 
   console.log(query.name);
@@ -64,16 +68,27 @@ const Home: NextPage<{ pokemons: Result[] }> = ({ pokemons }) => {
         <div className='flex flex-wrap justify-center my-5'>
 
           {
-            pokemons.map((poke) => {
-              return (
-                <>
-                  <div key={poke.name} className='m-4 bg-green-500 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-green-700 hover:text-gray-100 cursor-pointer'>
-                    <a>
-                      <h3>{poke.name}</h3>
-                    </a>
-                  </div>
-                </>);
-            })
+            query.name.length > 3 ?
+              pokemonData.map((pokemon) => {
+                return (
+                  <>
+
+                    <div key={pokemon.name} className='m-4 bg-green-500 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-green-700 hover:text-gray-100 cursor-pointer'>
+                      <h3>{pokemon.name}</h3>
+                    </div>
+                  </>);
+              })
+              :
+              pokemonData.map((pokemon) => {
+                return (
+                  <>
+                    <div key={pokemon.name} className='m-4 bg-green-500 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-green-700 hover:text-gray-100 cursor-pointer'>
+
+                      <h3>{pokemon.name}</h3>
+
+                    </div>
+                  </>);
+              })
           }
         </div>
       </main>
