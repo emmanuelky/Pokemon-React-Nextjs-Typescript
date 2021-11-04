@@ -1,12 +1,30 @@
 import type { NextPage, GetStaticProps } from 'next'
+import { useState } from 'react';
+import { Form, FormGroup } from 'react-bootstrap'
 import Head from 'next/head'
 import Image from 'next/image'
 import { AllPokemons, Result } from '../types';
 
 
+interface Query {
+  name: string;
+}
 
 const Home: NextPage<{ pokemons: Result[] }> = ({ pokemons }) => {
 
+  const [query, setQuery] = useState<Query>({
+    name: "",
+  });
+
+
+
+
+  const handleSearchedQuery = () => {
+
+
+  }
+
+  console.log(query.name);
 
   return (
     <div className='bg-green-900 flex flex-col items-center justify-center w-screen h-screen'>
@@ -23,7 +41,25 @@ const Home: NextPage<{ pokemons: Result[] }> = ({ pokemons }) => {
             Welcome to Pokemon's World!
           </h1>
         </div>
+        <div className='my-5 py-5'>
 
+
+          <Form>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Control
+                type="text"
+                placeholder="Enter Pokemon name"
+                value={query.name}
+                onChange={(e) => setQuery({ ...query, name: e.target.value })}
+                onKeyUp={() => handleSearchedQuery()}
+
+              />
+
+            </Form.Group>
+          </Form>
+
+
+        </div>
 
         <div className='flex flex-wrap justify-center my-5'>
 
