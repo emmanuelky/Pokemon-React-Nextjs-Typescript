@@ -1,11 +1,13 @@
 import type { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { AllPokemons } from "../types";
+import { AllPokemons, Result } from '../types';
 
 
 
-const Home: NextPage = () => {
+const Home: NextPage<{ pokemons: Result[] }> = ({ pokemons }) => {
+
+
   return (
     <div className='bg-green-300'>
       <Head>
@@ -22,7 +24,18 @@ const Home: NextPage = () => {
 
         <div className=''>
 
-
+          {
+            pokemons.map((poke) => {
+              return (
+                <>
+                  <div key={poke.name}>
+                    <a>
+                      <h3>{poke.name}</h3>
+                    </a>
+                  </div>
+                </>);
+            })
+          }
         </div>
       </main>
 
