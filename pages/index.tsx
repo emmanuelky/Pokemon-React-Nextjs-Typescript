@@ -2,6 +2,7 @@ import type { NextPage, GetStaticProps } from 'next'
 import { useState, useEffect } from 'react';
 import { Form, FormGroup } from 'react-bootstrap'
 import Head from 'next/head'
+import Link from "next/link";
 import Image from 'next/image'
 import { AllPokemons, Result } from '../types';
 
@@ -73,20 +74,29 @@ const Home: NextPage<{ pokemons: Result[] }> = ({ pokemons }) => {
                 return (
                   <>
 
-                    <div key={pokemon.name} className='m-4 bg-green-500 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-green-700 hover:text-gray-100 cursor-pointer'>
-                      <h3>{pokemon.name}</h3>
-                    </div>
+                    <Link href={`/pokemon/${pokemon.name}`}>
+                      <a>
+                        <div key={pokemon.name} className='m-4 bg-green-500 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-green-700 hover:text-gray-100 cursor-pointer'>
+
+                          <h3>{pokemon.name}</h3>
+                        </div>
+                      </a>
+                    </Link>
                   </>);
               })
               :
               pokemonData.map((pokemon) => {
                 return (
                   <>
-                    <div key={pokemon.name} className='m-4 bg-green-500 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-green-700 hover:text-gray-100 cursor-pointer'>
 
-                      <h3>{pokemon.name}</h3>
+                    <Link href={`/pokemon/${pokemon.name}`}>
+                      <a>
+                        <div key={pokemon.name} className='m-4 bg-green-500 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-green-700 hover:text-gray-100 cursor-pointer'>
 
-                    </div>
+                          <h3>{pokemon.name}</h3>
+                        </div>
+                      </a>
+                    </Link>
                   </>);
               })
           }
