@@ -1,6 +1,8 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { AllPokemons } from "../types";
+
 
 
 const Home: NextPage = () => {
@@ -30,5 +32,19 @@ const Home: NextPage = () => {
     </div>
   )
 }
+
+
+
+export const getStaticProps: GetStaticProps = async () => {
+  const res = await fetch("https://pokeapi.co/api/v2/pokemon/");
+  console.log(res)
+  const { results }: AllPokemons = await res.json();
+
+  return {
+    props: {
+      pokemons: results,
+    },
+  };
+};
 
 export default Home
