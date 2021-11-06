@@ -2,6 +2,10 @@
 
 The API used for this project is (https://pokeapi.co/).
 
+# Demo: https://pokemon-react-nextjs-typescript.vercel.app/
+
+
+
 This project was built using React, Next js, Typescript and TailwindCSS.
 
 My first approach was to study the api and understand the different type of data structures, with that i was able to get the interface types needed for typescript.
