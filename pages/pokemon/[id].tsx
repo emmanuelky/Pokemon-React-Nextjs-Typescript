@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Pokemon } from "../../types";
 import React from "react";
 import Link from 'next/link';
+import imageLoader from "../../ImageLoader";
 
 
 function PokeDetailPage({ pokemon }: { pokemon: Pokemon }) {
@@ -13,13 +14,17 @@ function PokeDetailPage({ pokemon }: { pokemon: Pokemon }) {
 
     return (
         <div className="bg-pink-500 h-100 w-100 pt-5">
-            <Link href="/">
+            <Link href="/" passHref>
                 <button className='p-2 cursor-pointer bg-pink-700 rounded-3xl mx-4'> <h3>Go back to home</h3></button>
             </Link>
 
             <div className="flex flex-col items-center justify-center ">
                 <div><h1 className="text-6xl">{pokemon.name}</h1> </div>
-                <div> <img src={pokemon.sprites.front_default} alt={pokemon.name} width={300} height={300} /></div>
+                <div> <Image loader={imageLoader}
+                    unoptimized
+                    src={pokemon.sprites.front_default}
+                    alt={pokemon.name}
+                    width={300} height={300} /></div>
 
             </div>
 

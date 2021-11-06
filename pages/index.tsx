@@ -82,7 +82,7 @@ const Home: NextPage<{ pokemons: Result[], currentPage: string }> = ({ pokemons,
                 return (
                   <>
 
-                    <Link href={`/pokemon/${pokemon.name}`}>
+                    <Link href={`/pokemon/${pokemon.name}`} passHref>
                       <a>
                         <div key={pokemon.name} className='m-4 bg-pink-600 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-pink-800 hover:text-gray-100 cursor-pointer'>
 
@@ -97,7 +97,7 @@ const Home: NextPage<{ pokemons: Result[], currentPage: string }> = ({ pokemons,
                 return (
                   <>
 
-                    <Link href={`/pokemon/${pokemon.name}`}>
+                    <Link href={`/pokemon/${pokemon.name}`} passHref>
                       <a>
                         <div key={pokemon.name} className='m-4 bg-pink-600 p-6 shadow-2xl text-gray-100 rounded-2xl hover:bg-pink-800 hover:text-gray-100 cursor-pointer'>
 
