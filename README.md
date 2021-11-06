@@ -4,7 +4,7 @@ The API used for this project is (https://pokeapi.co/).
 
 This project was built using React, Next js, Typescript and TailwindCSS.
 
-My first approach was to study the api and understand the different type of data structures, with that i was able to get the interface types need for typescript.
+My first approach was to study the api and understand the different type of data structures, with that i was able to get the interface types needed for typescript.
 
 Next, i used the GetStaticProps provided by Next js to fetch the data which was then pass as props to my component.
 Since i already initialized the data types i was able to assigned the fetch data to the given types.
