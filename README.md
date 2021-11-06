@@ -2,7 +2,7 @@
 
 The API used for this project is (https://pokeapi.co/).
 
-# Demo: https://pokemon-react-nextjs-typescript.vercel.app/
+Demo: https://pokemon-react-nextjs-typescript.vercel.app/
 
 
 
