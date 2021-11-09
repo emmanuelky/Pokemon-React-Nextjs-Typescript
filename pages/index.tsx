@@ -11,19 +11,14 @@ interface Query {
   name: string;
 }
 
-const Home: NextPage<{ pokemons: Result[], currentPage: string }> = ({ pokemons, currentPage }) => {
+const Home: NextPage<{ pokemons: Result[] }> = ({ pokemons }) => {
 
   const [pokemonData, setPokemonData] = useState<Result[]>([]);
   const [query, setQuery] = useState<Query>({
     name: "",
   });
 
-  const [currentPagination, setCurrentPagination] = useState('');
 
-  useEffect(() => {
-
-    setCurrentPagination(currentPage)
-  }, [])
 
 
   useEffect(() => {
@@ -122,16 +117,15 @@ const Home: NextPage<{ pokemons: Result[], currentPage: string }> = ({ pokemons,
 
 export const getStaticProps: GetStaticProps = async () => {
 
-  const currentPage = 'https://pokeapi.co/api/v2/pokemon'
 
-  const res = await fetch(currentPage);
+  const res = await fetch('https://pokeapi.co/api/v2/pokemon');
   console.log(res)
   const { results }: AllPokemons = await res.json();
 
   return {
     props: {
       pokemons: results,
-      currentPage: currentPage
+
     },
   };
 };
